@@ -12,5 +12,16 @@
 
     <artifactId>msh-core</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.mysitehouse</groupId>
+            <artifactId>msh-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mysitehouse</groupId>
+            <artifactId>msh-model</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>

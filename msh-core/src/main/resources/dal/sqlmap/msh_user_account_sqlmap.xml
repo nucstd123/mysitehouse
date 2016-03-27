@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--  Generate by autoSQLMap Powered by duxing@Taobao -->
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="MshUserAccountDAO">
+
+    <typeAlias alias="MshUserAccountDO" type=".dal.dataobject.MshUserAccountDO"/>
+
+    <resultMap id="resultMshUserAccountDOMap" class=".dal.dataobject.MshUserAccountDO">
+        <result property="id" column="ID"/>
+        <result property="gmtCreate" column="GMT_CREATE"/>
+        <result property="gmtModified" column="GMT_MODIFIED"/>
+        <result property="account" column="ACCOUNT"/>
+        <result property="password" column="PASSWORD"/>
+        <result property="status" column="STATUS"/>
+        <result property="feature" column="FEATURE"/>
+        <result property="remark" column="REMARK"/>
+    </resultMap>
+
+    <sql id="allCols">
+                 `ID`
+                ,`GMT_CREATE`
+                ,`GMT_MODIFIED`
+                ,`ACCOUNT`
+                ,`PASSWORD`
+                ,`STATUS`
+                ,`FEATURE`
+                ,`REMARK`
+    </sql>
+
+    <!--
+           开发负责人：sanxiu
+           功能说明：插入单条数据
+           前台或后台：后台
+           频率：每天1000以下
+           表大小：10W
+           分表数量：无
+           是否有缓存：无
+    -->
+    <insert id="insert" parameterClass="MshUserAccountDO">
+        <![CDATA[
+	    INSERT INTO `msh_user_account`(
+	    ]]>
+        <include refid="allCols"/>
+        <![CDATA[
+        )VALUES(
+                 #id#
+                ,now()
+                ,now()
+                ,#account#
+                ,#password#
+                ,#status#
+                ,#feature#
+                ,#remark#
+        );
+        ]]>
+
+    </insert>
+
+    <!--
+           开发负责人：sanxiu
+           功能说明：更新单条数据
+           前台或后台：后台
+           频率：每天1000以下
+           表大小：10W
+           分表数量：无
+           是否有缓存：无
+    -->
+    <update id="update">
+        <![CDATA[
+        UPDATE `msh_user_account` SET `GMT_MODIFIED` = now()
+        ]]>
+        <dynamic>
+            <isNotNull property="account" prepend=" , ">
+                `ACCOUNT` = #account#
+            </isNotNull>
+            <isNotNull property="password" prepend=" , ">
+                `PASSWORD` = #password#
+            </isNotNull>
+            <isNotNull property="status" prepend=" , ">
+                `STATUS` = #status#
+            </isNotNull>
+            <isNotNull property="feature" prepend=" , ">
+                `FEATURE` = #feature#
+            </isNotNull>
+            <isNotNull property="remark" prepend=" , ">
+                `REMARK` = #remark#
+            </isNotNull>
+        </dynamic>
+        <![CDATA[
+        WHERE `ID` = #id#;
+    	]]>
+    </update>
+
+    <!--
+           开发负责人：sanxiu
+           功能说明：查询单条数据
+           前台或后台：后台
+           频率：每天1000以下
+           表大小：10W
+           分表数量：无
+           是否有缓存：无
+        -->
+    <select id="select" resultMap="resultMshUserAccountDOMap">
+        <![CDATA[
+        SELECT
+        ]]>
+        <include refid="allCols"/>
+        <![CDATA[
+        FROM `msh_user_account` WHERE `ID` = #id#;
+        ]]>
+    </select>
+
+    <!--
+           开发负责人：sanxiu
+           功能说明：查询多条数据
+           前台或后台：后台
+           频率：每天1000以下
+           表大小：10W
+           分表数量：无
+           是否有缓存：无
+           可能的条件组合:
+           1.
+    -->
+    <select id="queryList" resultMap="resultMshUserAccountDOMap">
+        <![CDATA[
+        SELECT
+        ]]>
+        <include refid="allCols"/>
+        <![CDATA[
+        FROM `msh_user_account` WHERE  1
+        ]]>
+        <dynamic>
+            <isNotNull property="account" prepend=" AND ">
+                `ACCOUNT` = #account#
+            </isNotNull>
+            <isNotNull property="password" prepend=" AND ">
+                `PASSWORD` = #password#
+            </isNotNull>
+            <isNotNull property="status" prepend=" AND ">
+                `STATUS` = #status#
+            </isNotNull>
+            <isNotNull property="feature" prepend=" AND ">
+                `FEATURE` = #feature#
+            </isNotNull>
+            <isNotNull property="remark" prepend=" AND ">
+                `REMARK` = #remark#
+            </isNotNull>
+        </dynamic>
+        <![CDATA[
+        ORDER BY `ID` DESC
+        LIMIT #startRow#,#limit#;
+        ]]>
+
+    </select>
+
+    <!--
+           开发负责人：sanxiu
+           功能说明：查询条数
+           前台或后台：后台
+           频率：每天1000以下
+           表大小：10W
+           分表数量：无
+           是否有缓存：无
+           可能的条件组合:
+           1.
+    -->
+    <select id="queryCount" resultClass="java.lang.Integer">
+        <![CDATA[
+        SELECT
+        COUNT(*)
+        FROM `msh_user_account` WHERE  1
+        ]]>
+        <dynamic>
+            <isNotNull property="id" prepend=" AND ">
+                `ID` = #id#
+            </isNotNull>
+            <isNotNull property="gmtCreate" prepend=" AND ">
+                `GMT_CREATE` = #gmtCreate#
+            </isNotNull>
+            <isNotNull property="gmtModified" prepend=" AND ">
+                `GMT_MODIFIED` = #gmtModified#
+            </isNotNull>
+            <isNotNull property="account" prepend=" AND ">
+                `ACCOUNT` = #account#
+            </isNotNull>
+            <isNotNull property="password" prepend=" AND ">
+                `PASSWORD` = #password#
+            </isNotNull>
+            <isNotNull property="status" prepend=" AND ">
+                `STATUS` = #status#
+            </isNotNull>
+            <isNotNull property="feature" prepend=" AND ">
+                `FEATURE` = #feature#
+            </isNotNull>
+            <isNotNull property="remark" prepend=" AND ">
+                `REMARK` = #remark#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <!--
+           开发负责人：sanxiu
+           功能说明：物理删除单条数据
+           前台或后台：后台
+           频率：每天100以下
+           表大小：10W
+           分表数量：无
+           是否有缓存：无
+    -->
+    <update id="delete">
+        UPDATE `msh_user_account` SET `{DELETE_KEY}` = '1' WHERE `ID` = #id#;
+    </update>
+
+</sqlMap>
