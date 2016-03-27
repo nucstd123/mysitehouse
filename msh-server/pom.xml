@@ -37,5 +37,16 @@
             <version>3.0.1</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.mysitehouse</groupId>
+            <artifactId>msh-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mysitehouse</groupId>
+            <artifactId>msh-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 </project>
